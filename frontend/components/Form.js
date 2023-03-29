@@ -1,11 +1,36 @@
 import React from 'react'
 
-export default class Form extends React.Component {
+class Form extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      input: ""
+    }
+  }
+
+  handleSubmit = () => {
+    e.preventDefault();
+    this.props.handleAdd(this.state.input);
+
+  }
+
+  handleChange = () => {
+    this.setState({
+      ...this.state,
+      input: e.target.value
+    });
+  }
+  
+
   render() {
     return (
-      <div>
-        Form
-      </div>
-    )
+          <form>
+            <input onChange={this.handleChange}/>
+            <button onClick={this.handleSubmit}>Add</button>
+          </form>
+      
+    );
   }
 }
+
+export default Form;  
